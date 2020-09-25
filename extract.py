@@ -57,7 +57,7 @@ def defineCacheParam(filename_cache, callback_func, force_cache=False):
 
 
 # Escreve um arquivo, linha a linha
-def writeJson(filename, dict_content):
+def writeFile(filename, dict_content):
     # Cria a arvore de diretórios
     filesys_path = Path('/'.join(filename.split('/')[0:-1]))
     filesys_path.mkdir(parents=True, exist_ok=True)
@@ -98,7 +98,7 @@ def getContestResult(url):
         dict_resp = response.json()
         idConcursoAnterior = dict_resp['concursoAnterior'] if 'concursoAnterior' in dict_resp else None
         defineCacheParam(filename_cache=dict_cache_files['IDCONCURSO_FILE'], callback_func=str(idConcursoAnterior), force_cache=True) # savepoint
-        writeJson(dict_source_files['SOURCE_CONTEST_FILE'], dict_resp) # Escreve o primeiro objeto em um arquivo
+        writeFile(dict_source_files['SOURCE_CONTEST_FILE'], dict_resp) # Escreve o primeiro objeto em um arquivo
 
         # Iterar, consultar e guardar o resultado
         for c in range(int(dict_resp['concurso'])-1, 0, -1):
@@ -109,7 +109,7 @@ def getContestResult(url):
                 dict_resp = response.json()
                 _idConcursoAnterior = dict_resp['concursoAnterior'] if 'concursoAnterior' in dict_resp else None
                 defineCacheParam(filename_cache=dict_cache_files['IDCONCURSO_FILE'], callback_func=str(_idConcursoAnterior), force_cache=True) # savepoint
-                writeJson(dict_source_files['SOURCE_CONTEST_FILE'], dict_resp) # Escreve os dicts linha a linha
+                writeFile(dict_source_files['SOURCE_CONTEST_FILE'], dict_resp) # Escreve os dicts linha a linha
 
                 print('concurso = ' + str(dict_resp['concurso']))
 
