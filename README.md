@@ -1,5 +1,5 @@
-# ms_analytics
-Estudo para aplicar modelos probabilísticos e padrões coincidêntes para determinar um possível resultado dentro de uma série histórica de sorteios divulgados na CEF BR
+# cef-test-analytics
+Estudo para aplicar modelos probabilísticos e para determinar um possível resultado dentro da série histórica das loterias da CEF BR
 
 ### Virtual Environment
 #### Ambiente virtual controlado em python
