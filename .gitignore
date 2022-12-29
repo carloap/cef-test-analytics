@@ -1,9 +1,36 @@
-# dev
+# Byte-compiled
+__pycache__/
+*$py.class
+
+# Distrib / packaging
+.Python
+build/
+dist/
+sdist/
+develop-eggs/
+eggs/
+.eggs/
+
+# Unit test / cov reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.*
+cover/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
 venv
 cache
-__pycache__
-util/__pycache__
 
-# temp
-.DS_Store
+# Jupyter Notebook
 .ipynb_checkpoints/
+
+# IDE conf
+.vscode/
