@@ -22,6 +22,13 @@ def set_logger(context: str = "logger"):
     logger.propagate = False
     return logger
 
+def _abrir_caminho_diretorio(arquivo):
+    """
+    Função para criar árvore de diretórios para um arquivo
+    """
+    caminho_arquivo = Path('/'.join(arquivo.split('/')[0:-1]))
+    caminho_arquivo.mkdir(parents=True, exist_ok=True)
+
 def ler_arquivo(arquivo):
     """
     Função para leitura de arquivos de texto

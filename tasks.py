@@ -1,6 +1,8 @@
 from invoke import task
+import json
+from app.src.helpers import (set_logger, ler_arquivo)
 from app.src.extrair import MegaSena as Mega
-from app.src.helpers import set_logger
+from app.src.processar import gerar_parquet
 
 logger = set_logger("loterias")
 
@@ -39,3 +41,19 @@ def extrairMegaSena(c):
         resp2 = ms.ler_concurso(posicao)
     
     logger.info("Extração finalizada") 
+
+@task
+def gerarParquet(c):
+    """
+    Task para gerar parquet a partir dos dados coletados
+    """
+    caminho_arquivo = "data/staging/megasena/resultados.txt"
+    destino_arquivo = "data/raw/megasena/resultados.parquet"
+
+    conteudo = ler_arquivo(caminho_arquivo)
+    lista_resultados = []
+    for linha in conteudo.splitlines():
+        dict_linha = json.loads(linha)
+        lista_resultados.append(dict_linha)
+
+    gerar_parquet(destino_arquivo, lista_resultados)
