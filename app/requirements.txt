@@ -1,2 +1,5 @@
 requests
 invoke
+pandas>=1.5.2
+pyarrow>=10.0.1
+ipykernel
